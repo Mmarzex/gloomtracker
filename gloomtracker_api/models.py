@@ -16,7 +16,6 @@ class Character(models.Model):
     level = models.IntegerField(default=1)
     xp = models.IntegerField(default=0)
     character_class = models.ForeignKey(CharacterClass, on_delete=models.SET_NULL, null=True)
-    owner = models.ForeignKey('auth.User', on_delete=models.SET_NULL, null=True)
 
     def __str__(self):
         return f"{self.name}"
