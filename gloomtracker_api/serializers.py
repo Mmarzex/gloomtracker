@@ -23,8 +23,9 @@ class CharacterClassSerializers(serializers.ModelSerializer):
 class CharacterSerializer(serializers.ModelSerializer):
     perks = PerkSerializer(source='perk_set', many=True)
     items = ItemSerializer(source='item_set', many=True)
+    owner = serializers.ReadOnlyField(source='owner.username')
 
     class Meta:
         model = Character
         depth = 1
-        fields = ('id', 'name', 'level', 'xp', 'character_class', 'perks', 'items')
+        fields = ('id', 'name', 'level', 'xp', 'character_class', 'perks', 'items', 'owner')
